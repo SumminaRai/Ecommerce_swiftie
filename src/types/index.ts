@@ -18,3 +18,27 @@ export interface Product{
 export interface CartItem extends Product{
   quantity: number;
 }
+
+export interface User{
+  id: string;
+  name: string;
+  email: string;
+}
+
+export interface ShippingInfo{
+  fullName: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  postalCode: string;
+}
+
+export interface Order {
+  id: string;
+  ownerId: string;
+  items: CartItem[];
+  total: number;
+  shipping: ShippingInfo;
+  createdAt: string;
+}

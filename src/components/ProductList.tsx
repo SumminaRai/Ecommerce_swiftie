@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ProductCard from "./ProductCart";
 import { Product } from "@/types";
+import { useDebounce } from "@/hooks/Usedebounce";
 
 interface ProductListProps{
   products:Product[];
@@ -13,6 +14,7 @@ type SortOption = "default"|"price-asc"|"price-desc";
 export default function ProductList({products}:ProductListProps){
 
   const[Search, serSearch] = useState("");
+  const debounceSearch = useDebounce(Search,300);
   const[category, setCategory]= useState("all");
 const [sort, setSort] = useState<SortOption>("default");
 
@@ -20,7 +22,7 @@ const categories = ["all",...new Set(products.map((p)=>p.category))];
 
 const visibleProduct = products
 //for searching
-.filter((p)=>p.title.toLowerCase().includes(Search.toLowerCase()))
+.filter((p)=>p.title.toLowerCase().includes(debounceSearch.toLowerCase()))
 
 
 //for category

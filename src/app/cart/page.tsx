@@ -60,7 +60,14 @@ export default function CartPage(){
 
        <p className="mt-6 text-right text-xl font-semibold"> Total: ${total.toFixed(2)}</p>
        
-      
+      <div className="mt-4 text-right">
+  <Link
+    href="/checkout"
+    className="inline-block rounded-lg bg-black px-6 py-3 text-white dark:bg-white dark:text-black"
+  >
+    Proceed to checkout
+  </Link>
+</div>
       </main>
     );
   
